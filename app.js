@@ -309,7 +309,44 @@ function q14b() {
   }
 }
 
-
+function q15b() {
+  var pass = prompt("Enter your password");
+  var passFirst = pass.slice(0, 1);
+  var numCondition = /(?=.*\d)/;
+  var capCondition = /(?=.*[A-Z])/;
+  var passGrab = document.getElementById("q15b");
+  var passLength = pass.length;
+  passGrab.innerHTML = " <br>Entered Password: " + pass;
+  for (var i = 0; i < pass.length; i++) {
+    if (passLength >= 6) {
+      if (Number(passFirst) >= 0 && Number(passFirst) <= 9) {
+        passGrab.innerHTML +=
+          "<br>Password can not begin with a number <br> Please enter a valid Password ";
+        break;
+      } else {
+        var numTest = numCondition.test(pass);
+        if (numTest == true) {
+          var test2 = capCondition.test(pass);
+          if (test2 == true) {
+            passGrab.innerHTML += "<br> Correct Password!";
+            break;
+          } else {
+            passGrab.innerHTML +=
+              " <br> You password must contain atleast one capital character.";
+            break;
+          }
+        } else {
+          passGrab.innerHTML += " <br>Your password Must contain number";
+          break;
+        }
+      }
+    } else {
+      passGrab.innerHTML +=
+        "Password must contain atleast 6 characters. <br> Please Enter a valid Password";
+      break;
+    }
+  }
+}
 
 function q16b() {
   var q16b = "University of Karachi";
