@@ -177,6 +177,12 @@ function q9a() {
   q9p.innerHTML += "<br> The smallest number is " + smallest;
 }
 
+function q10a() {
+  for (var i = 1; i <= 20; i++) {
+    document.getElementById("q10a").innerHTML += 5 * i + " ,";
+  }
+}
+
 function q1b() {
   var fName = prompt("Enter your first name");
   var lName = prompt("Enter your last name");
@@ -271,20 +277,27 @@ function q12b() {
 
 function q13b() {
   var q13b = prompt("Enter your username");
-
-  for (var i = 0; i < q13b.length; i++) {
-    if (
-      q13b[i] == String.fromCharCode(33) ||
-      q13b[i] == String.fromCharCode(44) ||
-      q13b[i] == String.fromCharCode(46) ||
-      q13b[i] == String.fromCharCode(64)
-    ) {
+  var checkForNull = 0;
+  var wehnNull = q13b.length + 1;
+  for (var i = 0; i < wehnNull; i++) {
+    if (q13b.length > 0) {
+      if (
+        q13b.includes(String.fromCharCode(64)) ||
+        q13b.includes(String.fromCharCode(33)) ||
+        q13b.includes(String.fromCharCode(44)) ||
+        q13b.includes(String.fromCharCode(46))
+      ) {
+        q13b = prompt("Please enter a valid username");
+        i = -1;
+        continue;
+      } else {
+        document.getElementById("q13b").innerHTML =
+          "<h1> You enter a valid username </h1>";
+        break;
+      }
+    } else if (q13b.length == checkForNull) {
       q13b = prompt("Please enter a valid username");
       i = -1;
-      continue;
-    } else {
-      alert("You enter valid user name.");
-      break;
     }
   }
 }
